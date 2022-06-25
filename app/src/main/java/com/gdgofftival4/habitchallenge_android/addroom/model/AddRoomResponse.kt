@@ -5,10 +5,8 @@ import androidx.annotation.DrawableRes
 import com.gdgofftival4.habitchallenge_android.R
 import com.google.gson.annotations.SerializedName
 
-data class AddRoomRequest(
-    val category: Category? = null,
-    val title: String? = null,
-    val description: String? = null
+data class AddRoomResponse(
+    @SerializedName("room_id") val room_id: String
 )
 //{
 //    "title": "같이 금연습관 만드러용ㅋㅋ",

@@ -3,7 +3,6 @@ package com.gdgofftival4.habitchallenge_android.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -19,21 +18,27 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
 
         val roomId = intent.getStringExtra(EXTRA_ROOM_ID).orEmpty()
         val postId = intent.getStringExtra(EXTRA_POST_ID).orEmpty()
-        Log.d("TESTT", "roomId: $roomId, postId: $postId")
-        viewModel.setDetailMode(roomId, postId)
+        viewModel.getDetail(roomId, postId)
 
-        Glide.with(this)
-            .load("test")
-            .transform(CenterCrop())
-            .into(binding.detailImg)
+        viewModel.detailUiModel.observe(this) {
+            with(it.user) {
 
-        Glide.with(this)
-            .load("test")
-            .transform(CenterCrop(),  RoundedCorners(200))
-            .into(binding.userImage)
+                binding.userName.text = this.nickname
 
-        binding.userName.text = ""
-        binding.userRank.text = "D+"
+                Glide.with(this@DetailActivity)
+                    .load(this.image_url)
+                    .transform(CenterCrop(),  RoundedCorners(200))
+                    .into(binding.userImage)
+
+                binding.userRank.text = "D+ "+this.point.toString()
+            }
+            binding.dateTxt.text = it.created_date
+
+            Glide.with(this)
+                .load(it.post_image_url)
+                .transform(CenterCrop())
+                .into(binding.detailImg)
+        }
 
         binding.backBtn.setOnClickListener {
             finish()

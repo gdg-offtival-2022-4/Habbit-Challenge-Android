@@ -70,7 +70,12 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         val viewpagerFragmentAdapter = RoomViewpagerFragmentAdapter(this)
         viewPager.adapter = viewpagerFragmentAdapter
 
-        val tabTitles = listOf("순위", "기록")
+
+        var count = 0
+        rankViewModel.recordUiModel.observe(this) {
+            count = it.size
+        }
+        val tabTitles = listOf("순위", "기록 $count")
         // 2. TabLayout과 ViewPager2를 연결하고, TabItem의 메뉴명을 설정한다.
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = tabTitles[position]
