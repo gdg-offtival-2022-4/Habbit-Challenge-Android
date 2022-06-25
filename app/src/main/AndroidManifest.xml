@@ -30,6 +30,10 @@
             android:name=".profile.EditProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+        <activity
+            android:name=".home.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
 
     </application>
 

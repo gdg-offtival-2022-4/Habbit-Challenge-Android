@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig
 import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
+import com.gdgofftival4.habitchallenge_android.home.HomeActivity
 import com.gdgofftival4.habitchallenge_android.login.LoginActivity
 
 @SuppressLint("CustomSplashScreen")
@@ -17,6 +18,7 @@ class SplashActivity : BaseBindingActivity<ActivitySplashBinding>(ActivitySplash
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
             // Todo : 메인 화면 이동
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 }
