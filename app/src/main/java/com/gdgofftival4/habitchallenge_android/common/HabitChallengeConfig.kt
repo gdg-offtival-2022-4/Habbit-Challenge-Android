@@ -14,7 +14,7 @@ object HabitChallengeConfig {
             .getSharedPreferences(PREFERENCE, Context.MODE_PRIVATE)
     }
 
-    var userId: Int
-        get() = preference.getInt(USER_ID, -1)
-        set(value) = preference.edit { putInt(USER_ID, value) }
+    var userId: String?
+        get() = preference.getString(USER_ID, null)
+        set(value) = preference.edit { putString(USER_ID, value) }
 }

@@ -14,7 +14,7 @@ class SplashActivity : BaseBindingActivity<ActivitySplashBinding>(ActivitySplash
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (HabitChallengeConfig.userId == -1) {
+        if (HabitChallengeConfig.userId == null) {
             startActivity(Intent(this, LoginActivity::class.java))
         } else {
             // Todo : 메인 화면 이동
