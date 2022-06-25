@@ -6,12 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gdgofftival4.habitchallenge_android.addroom.model.AddRoomRequest
-import com.gdgofftival4.habitchallenge_android.addroom.model.Category
-import com.gdgofftival4.habitchallenge_android.addroom.model.CategoryUiModel
+import com.gdgofftival4.habitchallenge_android.addroom.model.*
 import com.gdgofftival4.habitchallenge_android.common.EventLiveData
 import com.gdgofftival4.habitchallenge_android.common.MutableEventLiveData
 import com.gdgofftival4.habitchallenge_android.detail.model.MetaDetailModel
+import com.gdgofftival4.habitchallenge_android.home.model.GetHomeService
 import com.gdgofftival4.habitchallenge_android.network.RetrofitClient
 import com.gdgofftival4.habitchallenge_android.network.onFailure
 import com.gdgofftival4.habitchallenge_android.network.onSuccess
@@ -33,7 +32,9 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class AddViewModel : ViewModel() {
+class AddViewModel(
+    private val addRoomService: PostAddRoomService = RetrofitClient.instance.create(PostAddRoomService::class.java)
+) : ViewModel() {
 
     private val _categoryUiModel = MutableLiveData<List<CategoryUiModel>>()
     val categoryUiModel: LiveData<List<CategoryUiModel>>
@@ -59,17 +60,26 @@ class AddViewModel : ViewModel() {
     val addroomUiModel: StateFlow<AddRoomRequest>
         get() = _addroomUiModel
 
+    private val _addRoomResponse = MutableLiveData<AddRoomResponse>()
+    val addRoomResponse: LiveData<AddRoomResponse>
+        get() = _addRoomResponse
+
     fun onDoneAddRoom() {
         Log.d(javaClass.simpleName, addroomUiModel.value.toString())
         val request = addroomUiModel.value
         with(request) {
             if(this.title != null && this.description != null && this.category != null){
                 // Todo: Add Room 호출
-                this.category.idx
-
+                val request = PostAddRoomRequest(this.title, this.category.idx, this.description)
+                viewModelScope.launch {
+                    with(addRoomService.getHommeList(request)) {
+                        if(this.isSuccessful){
+                            _addRoomResponse.postValue(this.body())
+                        }
+                    }
+                }
             }
         }
-
     }
 
     fun onUpdatetitle(title: String) {

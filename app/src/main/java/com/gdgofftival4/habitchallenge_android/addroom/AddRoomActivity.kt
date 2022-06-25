@@ -1,5 +1,6 @@
 package com.gdgofftival4.habitchallenge_android.addroom
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -10,6 +11,7 @@ import com.gdgofftival4.habitchallenge_android.addroom.model.CategoryUiModel
 import com.gdgofftival4.habitchallenge_android.addroom.model.Category
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityAddroomBinding
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 
 class AddRoomActivity : BaseBindingActivity<ActivityAddroomBinding>(ActivityAddroomBinding::inflate) {
 
@@ -35,6 +37,17 @@ class AddRoomActivity : BaseBindingActivity<ActivityAddroomBinding>(ActivityAddr
 
         viewModel.categoryUiModel.observe(this) {
             categoryAdapter.addAll(it)
+        }
+
+        viewModel.addRoomResponse.observe(this) {
+            if(it.room_id.isNotEmpty()) {
+                val intent = Intent(this, RoomActivity::class.java)
+                intent.putExtra("roomId", it.room_id)
+                intent.putExtra("roomTitle", binding.titleEdit.text.toString())
+                intent.putExtra("roomContents", binding.descriptEdit.text.toString())
+                startActivity(intent)
+                finish()
+            }
         }
 
         binding.titleEdit.doAfterTextChanged {
