@@ -23,7 +23,7 @@ class RankAdapter(
 
     override fun onBindViewHolder(holder: RankHolderPage, position: Int) {
         val viewHolder: RankHolderPage = holder
-        viewHolder.onBind(itemList[position])
+        viewHolder.onBind(itemList[position], position == 0)
     }
 
     override fun getItemCount(): Int {
