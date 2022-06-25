@@ -23,7 +23,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
         <activity
-            android:name=".login.RegisterActivity"
+            android:name=".register.RegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
         <activity

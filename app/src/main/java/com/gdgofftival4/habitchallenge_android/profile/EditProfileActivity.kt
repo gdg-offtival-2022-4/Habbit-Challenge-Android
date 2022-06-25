@@ -13,7 +13,7 @@ import com.gdgofftival4.habitchallenge_android.databinding.ActivityEditProfieBin
 import com.gdgofftival4.habitchallenge_android.extension.repeatOnStart
 import com.gdgofftival4.habitchallenge_android.extension.setCircleImageUri
 import com.gdgofftival4.habitchallenge_android.extension.setTextIfNew
-import com.gdgofftival4.habitchallenge_android.login.MetaRegisterModel
+import com.gdgofftival4.habitchallenge_android.register.MetaRegisterModel
 import kotlinx.coroutines.launch
 
 class EditProfileActivity : BaseBindingActivity<ActivityEditProfieBinding>(ActivityEditProfieBinding::inflate) {
