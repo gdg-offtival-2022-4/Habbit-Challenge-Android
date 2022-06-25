@@ -8,6 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface GetHomeService {
-    @GET("/main")
+    @GET("main")
     suspend fun getHommeList(@Query("userId") userId: String): Response<List<RoomUiResponse>>
 }

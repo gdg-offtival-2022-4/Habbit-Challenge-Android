@@ -19,7 +19,8 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getHomeList(HabitChallengeConfig.userId.toString())
+//        viewModel.getHomeList(HabitChallengeConfig.userId.toString())
+        viewModel.getHomeList("1")
 
         val roomAdapter = RoomAdapter(
             onItemClick = {
