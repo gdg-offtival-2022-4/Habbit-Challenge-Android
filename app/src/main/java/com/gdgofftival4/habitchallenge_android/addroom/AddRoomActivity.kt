@@ -13,7 +13,7 @@ import com.gdgofftival4.habitchallenge_android.databinding.ActivityAddroomBindin
 
 class AddRoomActivity : BaseBindingActivity<ActivityAddroomBinding>(ActivityAddroomBinding::inflate) {
 
-    private val viewModel: RegisterViewModel by viewModels()
+    private val viewModel: AddViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

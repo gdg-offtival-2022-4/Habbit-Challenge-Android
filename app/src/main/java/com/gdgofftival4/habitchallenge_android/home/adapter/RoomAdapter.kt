@@ -9,7 +9,7 @@ import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.home.model.RoomUiResponse
 
 class RoomAdapter(
-    private val onItemClick: (rooId: String) -> Unit
+    private val onItemClick: (roomId: String, roomTitle: String, roomContent: String) -> Unit
 ) : RecyclerView.Adapter<RoomHolderPage>() {
 
     private val itemList = ArrayList<RoomUiResponse>()

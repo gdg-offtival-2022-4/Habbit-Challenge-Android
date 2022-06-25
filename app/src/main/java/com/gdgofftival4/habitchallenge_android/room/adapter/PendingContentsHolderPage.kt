@@ -5,27 +5,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.gdgofftival4.habitchallenge_android.databinding.ItemPendingContentsBinding
-import com.gdgofftival4.habitchallenge_android.room.model.PendingContent
+import com.gdgofftival4.habitchallenge_android.room.model.RecordResponse
 
 
 class PendingContentsHolderPage internal constructor(
     itemView: View,
-    val onClick: (position: Int) -> Unit
+    val onClick: (postId: String) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = ItemPendingContentsBinding.bind(itemView)
 
-    var data: PendingContent? = null
-    fun onBind(data: PendingContent) {
+    var data: RecordResponse? = null
+    fun onBind(data: RecordResponse) {
         this.data = data
         itemView.setOnClickListener {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                onClick.invoke(position)
+                onClick.invoke(data.post_id)
             }
         }
+
         Glide.with(itemView.context)
-            .load(data.contentImg)
+            .load(data.post_image_url)
             .transform(CenterCrop())
             .into(binding.contentImg)
     }

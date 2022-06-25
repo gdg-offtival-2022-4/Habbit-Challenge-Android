@@ -23,7 +23,11 @@
             android:name=".splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
@@ -44,14 +48,7 @@
         <activity
             android:name=".room.RoomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
         <activity
             android:name=".addroom.AddRoomActivity"
             android:screenOrientation="portrait"

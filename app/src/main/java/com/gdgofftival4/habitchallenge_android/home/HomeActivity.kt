@@ -23,9 +23,11 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         viewModel.getHomeList("1")
 
         val roomAdapter = RoomAdapter(
-            onItemClick = {
+            onItemClick = { roomId, roomTitle, roomContents ->
                 val intent = Intent(this, RoomActivity::class.java)
-                intent.putExtra("roomId", it)
+                intent.putExtra("roomId", roomId)
+                intent.putExtra("roomTitle", roomTitle)
+                intent.putExtra("roomContents", roomContents)
                 startActivity(intent)
             }
         )

@@ -21,27 +21,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
-                <TextView
+                <ImageView
                     android:id="@+id/back_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="14dp"
+                    android:src="@drawable/ic_back"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    android:text="back">
-                </TextView>
+                    android:layout_margin="12dp">
+                </ImageView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="습관 만들기"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/addroom_top"
+                app:layout_constraintLeft_toLeftOf="parent">
+            </TextView>
+
 
             <TextView
                 android:id="@+id/add_title_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/addroom_top"
+                app:layout_constraintTop_toBottomOf="@id/txt"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="title"
+                android:text="제목"
+                android:textSize="14dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="32dp">
             </TextView>
 
             <EditText
@@ -49,9 +66,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/add_title_txt"
-                android:padding="8dp"
+                android:padding="12dp"
+                android:hint="제목을 입력해주세요."
+                android:textSize="16dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shape_round_rectangle">
             </EditText>
 
@@ -61,9 +82,11 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/title_edit"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginTop="16dp"
+                android:text="카테고리"
+                android:textSize="14dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
-                android:text="category">
+                android:layout_marginTop="16dp">
             </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -79,7 +102,9 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/category_recycler"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="descript"
+                android:text="규칙"
+                android:textColor="@color/black"
+                android:textSize="14dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp">
             </TextView>
@@ -92,6 +117,7 @@
                 android:padding="8dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shape_round_rectangle">
             </EditText>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -105,7 +131,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:gravity="center"
-        android:text="done"
+        android:text="완료"
+        android:textStyle="bold"
+        android:textSize="16dp"
         android:padding="16dp"
         android:layout_margin="16dp"
         android:background="@color/black"

@@ -17,14 +17,15 @@ import com.gdgofftival4.habitchallenge_android.room.model.RankUiResponse
 
 class RankFragment : Fragment() {
 
-    lateinit var viewModel: RankViewModel
+    private val viewModel: RankViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(RankViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(RankViewModel::class.java)
         return FragmentRankBinding.inflate(inflater, container, false).root
     }
 
@@ -32,7 +33,7 @@ class RankFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // rank api 호출
-        viewModel.getRankList("7")
+        viewModel.getRankList(viewModel.roomIdiModel.value.roomId)
 
         val binding = FragmentRankBinding.bind(view)
 

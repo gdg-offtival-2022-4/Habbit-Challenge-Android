@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.room.model.PendingContent
+import com.gdgofftival4.habitchallenge_android.room.model.RecordResponse
 
 class PendingContentsAdapter(
-    private val onItemClick: (position: Int) -> Unit
+    private val onItemClick: (postId: String) -> Unit
 ) : RecyclerView.Adapter<PendingContentsHolderPage>() {
 
-    private val itemList = ArrayList<PendingContent>()
+    private val itemList = ArrayList<RecordResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingContentsHolderPage {
         val context: Context = parent.context
@@ -30,12 +30,12 @@ class PendingContentsAdapter(
         return itemList.size
     }
 
-    fun getItem(position: Int): PendingContent {
+    fun getItem(position: Int): RecordResponse {
         return itemList[position]
     }
 
 
-    fun addAll(items: List<PendingContent>) {
+    fun addAll(items: List<RecordResponse>) {
         itemList.clear()
         itemList.addAll(items)
         notifyDataSetChanged()

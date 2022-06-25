@@ -20,7 +20,7 @@ class SplashActivity : BaseBindingActivity<ActivitySplashBinding>(ActivitySplash
         lifecycleScope.launch {
             delay(2000L)
             if (HabitChallengeConfig.userId == null) {
-                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+                startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
                 finish()
             } else {
                 startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
