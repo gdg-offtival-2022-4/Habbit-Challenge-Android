@@ -51,7 +51,11 @@ class UserContentListActivity :
         observeEvent(viewModel.userContentListEvent) {
             when (it) {
                 is UserContentListEvent.Detail -> {
-                    //Todo
+                    DetailActivity.startDetailActivity(
+                        context = this,
+                        roomId = roomId,
+                        postId = it.postId
+                    )
                 }
             }
         }

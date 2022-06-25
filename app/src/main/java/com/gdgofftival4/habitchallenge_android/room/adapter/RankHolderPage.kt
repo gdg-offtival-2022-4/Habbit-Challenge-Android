@@ -15,7 +15,7 @@ import com.gdgofftival4.habitchallenge_android.room.model.RankUiResponse
 
 class RankHolderPage internal constructor(
     itemView: View,
-    val onClick: (position: Int) -> Unit
+    val onClick: (userId: String) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = ItemRankBinding.bind(itemView)
@@ -24,10 +24,7 @@ class RankHolderPage internal constructor(
     fun onBind(data: RankUiResponse, isTop: Boolean = false) {
         this.data = data
         binding.rankMain.setOnClickListener {
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                onClick.invoke(position)
-            }
+            onClick.invoke(data.user_id)
         }
         binding.userImage.setCircleImageUri(Uri.parse(data.userImg), R.drawable.ic_profile_default)
         binding.userRankBadge.isVisible = isTop

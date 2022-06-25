@@ -9,7 +9,7 @@ import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.room.model.RankUiResponse
 
 class RankAdapter(
-    private val onItemClick: (position: Int) -> Unit
+    private val onItemClick: (userId: String) -> Unit
 ) : RecyclerView.Adapter<RankHolderPage>() {
 
     private val itemList = ArrayList<RankUiResponse>()

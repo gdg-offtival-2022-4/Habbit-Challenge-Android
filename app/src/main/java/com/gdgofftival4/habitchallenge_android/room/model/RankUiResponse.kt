@@ -6,5 +6,6 @@ data class RankUiResponse(
     @SerializedName("rank") val rank: Int,
     @SerializedName("user_image_url") val userImg: String,
     @SerializedName("nickname") val userName: String,
-    @SerializedName("point") val userCombo: Int
-    )
+    @SerializedName("point") val userCombo: Int,
+    val user_id: String
+)
