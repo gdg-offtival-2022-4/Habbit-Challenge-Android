@@ -11,29 +11,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitChallengeAndroid">
         <activity
+            android:name=".detail.UserContentListActivity"
+            android:exported="false" />
+        <activity
             android:name=".splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
         <activity
             android:name=".register.RegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
         <activity
             android:name=".profile.EditProfileActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
     </application>
 
 </manifest>
