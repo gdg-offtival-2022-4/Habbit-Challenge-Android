@@ -2,11 +2,18 @@ package com.gdgofftival4.habitchallenge_android.detail
 
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gdgofftival4.habitchallenge_android.common.EventLiveData
+import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig.userId
 import com.gdgofftival4.habitchallenge_android.common.MutableEventLiveData
+import com.gdgofftival4.habitchallenge_android.detail.model.DetailResponse
+import com.gdgofftival4.habitchallenge_android.detail.model.GetDetailService
 import com.gdgofftival4.habitchallenge_android.detail.model.MetaDetailModel
+import com.gdgofftival4.habitchallenge_android.home.model.GetHomeService
+import com.gdgofftival4.habitchallenge_android.home.model.RoomUiResponse
 import com.gdgofftival4.habitchallenge_android.network.RetrofitClient
 import com.gdgofftival4.habitchallenge_android.network.onFailure
 import com.gdgofftival4.habitchallenge_android.network.onSuccess
@@ -26,7 +33,9 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class DetailViewModel() : ViewModel() {
+class DetailViewModel(
+    private val detailService: GetDetailService = RetrofitClient.instance.create(GetDetailService::class.java)
+) : ViewModel() {
 
     private var metaDetailModel: MetaDetailModel? = null
 
@@ -35,6 +44,20 @@ class DetailViewModel() : ViewModel() {
         if (metaDetailModel == null) {
             // Todo: 유저 정보 api 요청
 
+        }
+    }
+
+    private val _detailUiModel = MutableLiveData<DetailResponse>()
+    val detailUiModel: LiveData<DetailResponse>
+        get() = _detailUiModel
+
+    fun getDetail(roomId: String, postId: String) {
+        viewModelScope.launch {
+            with(detailService.getDetailt(roomId, postId)) {
+                if(this.isSuccessful){
+                    _detailUiModel.postValue(this.body())
+                }
+            }
         }
     }
 }

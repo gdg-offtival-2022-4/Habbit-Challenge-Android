@@ -26,18 +26,27 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
         val roomId = intent.getStringExtra("roomId")
         val postId = intent.getStringExtra("postId")
 
-        Glide.with(this)
-            .load("test")
-            .transform(CenterCrop())
-            .into(binding.detailImg)
+        viewModel.getDetail(roomId!!, postId!!)
 
-        Glide.with(this)
-            .load("test")
-            .transform(CenterCrop(),  RoundedCorners(200))
-            .into(binding.userImage)
+        viewModel.detailUiModel.observe(this) {
+            with(it.user) {
 
-        binding.userName.text = ""
-        binding.userRank.text = "D+"
+                binding.userName.text = this.nickname
+
+                Glide.with(this@DetailActivity)
+                    .load(this.image_url)
+                    .transform(CenterCrop(),  RoundedCorners(200))
+                    .into(binding.userImage)
+
+                binding.userRank.text = "D+ "+this.point.toString()
+            }
+            binding.dateTxt.text = it.created_date
+
+            Glide.with(this)
+                .load(it.post_image_url)
+                .transform(CenterCrop())
+                .into(binding.detailImg)
+        }
 
         binding.backBtn.setOnClickListener {
             finish()
