@@ -1,21 +1,48 @@
 package com.gdgofftival4.habitchallenge_android.room
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewbinding.ViewBinding
-import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.databinding.ActivityRegisterBinding.inflate
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.gdgofftival4.habitchallenge_android.databinding.FragmentItemBinding
+import com.gdgofftival4.habitchallenge_android.room.adapter.PendingContentsAdapter
+import com.gdgofftival4.habitchallenge_android.room.adapter.RankAdapter
+import com.gdgofftival4.habitchallenge_android.room.model.PendingContent
+import com.gdgofftival4.habitchallenge_android.room.model.Rank
 
 
-class ItemFragment : Fragment(R.layout.fragment_item){
-    private var binding: ViewBinding? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = inflate(layoutInflater)
+class ItemFragment : Fragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        return FragmentItemBinding.inflate(inflater, container, false).root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentItemBinding.bind(view)
+
+        val pendingAdapter = PendingContentsAdapter(
+            onItemClick = {
+                // Todo
+            }
+        )
+        binding.pendingContentsRecycler.run {
+            adapter = pendingAdapter
+            layoutManager = GridLayoutManager(context, 3)
+
+        val dummy = mutableListOf<PendingContent>()
+        val item = PendingContent(1, "test")
+        for(i in 0..10){
+            dummy.add(item)
+        }
+        pendingAdapter.addAll(dummy)
+        }
     }
 }

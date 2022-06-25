@@ -1,13 +1,10 @@
 package com.gdgofftival4.habitchallenge_android.room.adapter
 
-import android.app.Activity
-import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.gdgofftival4.habitchallenge_android.room.ItemFragment
 import com.gdgofftival4.habitchallenge_android.room.RankFragment
-import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 
 class RoomViewpagerFragmentAdapter(fa: FragmentActivity): FragmentStateAdapter(fa) {
 

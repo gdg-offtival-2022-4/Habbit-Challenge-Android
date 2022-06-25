@@ -39,5 +39,4 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
     </application>
-
 </manifest>
