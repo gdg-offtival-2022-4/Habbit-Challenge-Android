@@ -6,20 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.home.model.Rooms
-import kotlinx.coroutines.NonDisposableHandle.parent
+import com.gdgofftival4.habitchallenge_android.home.model.Room
 
 class RoomAdapter(
-    private val onClick: (position: Int) -> Unit
+    private val onItemClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<RoomHolderPage>() {
 
-    private val itemList = ArrayList<Rooms>()
+    private val itemList = ArrayList<Room>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomHolderPage {
         val context: Context = parent.context
         val view: View =
             LayoutInflater.from(context).inflate(R.layout.item_room, parent, false)
-        return RoomHolderPage(view, onClick)
+        return RoomHolderPage(view, onItemClick)
     }
 
     override fun onBindViewHolder(holder: RoomHolderPage, position: Int) {
@@ -31,13 +30,15 @@ class RoomAdapter(
         return itemList.size
     }
 
-    fun getItem(position: Int): Rooms {
+    fun getItem(position: Int): Room {
         return itemList[position]
     }
 
 
-    fun addItem(item: Rooms) {
-        itemList.add(item)
+    fun addAll(items: List<Room>) {
+        itemList.clear()
+        itemList.addAll(items)
+        notifyDataSetChanged()
     }
 
     fun clear() {

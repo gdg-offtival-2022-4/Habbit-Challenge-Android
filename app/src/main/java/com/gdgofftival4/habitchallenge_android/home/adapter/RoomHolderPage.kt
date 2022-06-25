@@ -1,15 +1,12 @@
 package com.gdgofftival4.habitchallenge_android.home.adapter
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.databinding.ItemRoomBinding
-import com.gdgofftival4.habitchallenge_android.home.model.Rooms
+import com.gdgofftival4.habitchallenge_android.home.model.Room
 
 
 class RoomHolderPage internal constructor(
@@ -19,8 +16,8 @@ class RoomHolderPage internal constructor(
 
     private val binding = ItemRoomBinding.bind(itemView)
 
-    var data: Rooms? = null
-    fun onBind(data: Rooms) {
+    var data: Room? = null
+    fun onBind(data: Room) {
         this.data = data
         binding.itemRoom.setOnClickListener { a_view ->
             val position = adapterPosition
