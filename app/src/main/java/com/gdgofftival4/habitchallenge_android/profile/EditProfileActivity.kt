@@ -1,4 +1,4 @@
-package com.gdgofftival4.habitchallenge_android
+package com.gdgofftival4.habitchallenge_android.profile
 
 import android.os.Bundle
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
