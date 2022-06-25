@@ -22,9 +22,9 @@ class RegisterActivity : BaseBindingActivity<ActivityRegisterBinding>(ActivityRe
         repeatOnStart {
             launch {
                 viewModel.registerUiModel.collect {
-                    binding.emailEdit.setTextIfNew(it.email)
-                    binding.passwordEdit.setTextIfNew(it.password)
-                    binding.checkPasswordEdit.setTextIfNew(it.checkPassword)
+                    binding.inputEmailRegister.setTextIfNew(it.email)
+                    binding.inputPasswordRegister.setTextIfNew(it.password)
+                    binding.inputPasswordCheckRegister.setTextIfNew(it.checkPassword)
                 }
             }
         }
@@ -41,19 +41,19 @@ class RegisterActivity : BaseBindingActivity<ActivityRegisterBinding>(ActivityRe
             }
         }
 
-        binding.emailEdit.doAfterTextChanged {
+        binding.inputEmailRegister.doAfterTextChanged {
             viewModel.onChangeEmail(it?.toString().orEmpty())
         }
 
-        binding.passwordEdit.doAfterTextChanged {
+        binding.inputPasswordRegister.doAfterTextChanged {
             viewModel.onChangePassword(it?.toString().orEmpty())
         }
 
-        binding.checkPasswordEdit.doAfterTextChanged {
+        binding.inputPasswordCheckRegister.doAfterTextChanged {
             viewModel.onChangeCheckPassword(it?.toString().orEmpty())
         }
 
-        binding.doneBtn.setOnClickListener {
+        binding.buttonNext.setOnClickListener {
             viewModel.onClickNextButton()
         }
 

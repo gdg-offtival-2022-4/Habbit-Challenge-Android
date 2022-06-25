@@ -1,54 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile.EditProfileActivity">
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    tools:context=".register.RegisterActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="20dp"
+        android:src="@drawable/ic_back"
+        android:text="back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="프로필"
+        android:textColor="@color/primary"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/edit_profile_top"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="뒤로가기"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_profile_default"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        </TextView>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@drawable/ic_select_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/edit_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edit_profile_top">
-
-    </androidx.appcompat.widget.AppCompatImageView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:text="닉네임" />
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/nickname_edit"
+        android:id="@+id/input_nickname_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edit_img" />
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_round_rectangle"
+        android:hint="닉네임"
+        android:inputType="text"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12.5dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/gray_light" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_profile_done"
+        android:id="@+id/button_done_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="done"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nickname_edit" />
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_round_rectangle_fill"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

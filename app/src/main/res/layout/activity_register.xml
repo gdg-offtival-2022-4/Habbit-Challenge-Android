@@ -1,107 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
     tools:context=".register.RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/register_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:text="back">
-        </TextView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/id_txt"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/register_top"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="id"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp">
-    </TextView>
-
-    <EditText
-        android:id="@+id/email_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/id_txt"
-        android:padding="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/shape_round_rectangle">
-    </EditText>
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="20dp"
+        android:src="@drawable/ic_back"
+        android:text="back" />
 
     <TextView
-        android:id="@+id/password_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/email_edit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="회원가입"
+        android:textColor="@color/primary"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="42dp"
+        android:text="이메일" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/input_email_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_round_rectangle"
+        android:hint="rabbit@habit.com"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12.5dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/gray_light" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="pw">
-    </TextView>
+        android:text="비밀번호" />
 
-    <EditText
-        android:id="@+id/password_edit"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/input_password_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/password_txt"
-        android:padding="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/shape_round_rectangle">
-    </EditText>
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_round_rectangle"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12.5dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/gray_light" />
 
     <TextView
-        android:id="@+id/check_password_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/password_edit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
-        android:text="check pw">
-    </TextView>
+        android:text="비밀번호 확인" />
 
-    <EditText
-        android:id="@+id/check_password_edit"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/input_password_check_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/check_password_txt"
-        android:padding="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/shape_round_rectangle">
-    </EditText>
+        android:layout_marginTop="6dp"
+        android:background="@drawable/shape_round_rectangle"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12.5dp"
+        android:textColor="@color/primary"
+        android:textColorHint="@color/gray_light" />
 
-    <TextView
-        android:id="@+id/done_btn"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/check_password_edit"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="done"
-        android:textColor="@color/white"
-        android:padding="12dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/shape_round_rectangle_fill"
         android:gravity="center"
-        android:layout_margin="16dp"
-        android:background="@color/black">
-    </TextView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:padding="12dp"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+</LinearLayout>
