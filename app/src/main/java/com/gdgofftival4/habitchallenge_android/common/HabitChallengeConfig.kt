@@ -15,6 +15,6 @@ object HabitChallengeConfig {
     }
 
     var userId: Int
-        get() = preference.getInt(USER_ID, 0)
+        get() = preference.getInt(USER_ID, -1)
         set(value) = preference.edit { putInt(USER_ID, value) }
 }
