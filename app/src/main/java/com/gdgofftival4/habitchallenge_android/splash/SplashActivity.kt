@@ -10,6 +10,7 @@ import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
 import com.gdgofftival4.habitchallenge_android.detail.UserContentListActivity
 import com.gdgofftival4.habitchallenge_android.home.HomeActivity
 import com.gdgofftival4.habitchallenge_android.login.LoginActivity
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -21,7 +22,7 @@ class SplashActivity : BaseBindingActivity<ActivitySplashBinding>(ActivitySplash
         lifecycleScope.launch {
             delay(2000L)
             if (HabitChallengeConfig.userId == null) {
-                startActivity(Intent(this@SplashActivity, HomeActivity::class.java))
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
                 finish()
             } else {
                 startActivity(Intent(this@SplashActivity, HomeActivity::class.java))

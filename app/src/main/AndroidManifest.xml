@@ -56,6 +56,10 @@
             android:name=".addroom.AddRoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
+        <activity
+            android:name=".detail.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
