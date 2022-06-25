@@ -11,7 +11,9 @@ import androidx.viewpager2.widget.ViewPager2
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityRoomBinding
 import com.gdgofftival4.habitchallenge_android.detail.DetailActivity
+import com.gdgofftival4.habitchallenge_android.extension.copyToClipboard
 import com.gdgofftival4.habitchallenge_android.extension.observeEvent
+import com.gdgofftival4.habitchallenge_android.extension.showAllowingStateLoss
 import com.gdgofftival4.habitchallenge_android.extension.toast
 import com.gdgofftival4.habitchallenge_android.profile.EditProfileActivity
 import com.gdgofftival4.habitchallenge_android.room.adapter.RoomViewpagerFragmentAdapter
@@ -97,7 +99,9 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         }
 
         binding.informationBtn.setOnClickListener {
-
+            showAllowingStateLoss("more") {
+                RoomMoreBottomSheetDialogFragment()
+            }
         }
 
         binding.backBtn.setOnClickListener {

@@ -5,8 +5,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityInviteBinding
+import com.gdgofftival4.habitchallenge_android.extension.observeEvent
 import com.gdgofftival4.habitchallenge_android.extension.repeatOnStart
 import com.gdgofftival4.habitchallenge_android.home.HomeActivity
+import com.gdgofftival4.habitchallenge_android.login.LoginActivity
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 import kotlinx.coroutines.launch
 
 class InviteActivity : BaseBindingActivity<ActivityInviteBinding>(ActivityInviteBinding::inflate) {
@@ -26,6 +29,21 @@ class InviteActivity : BaseBindingActivity<ActivityInviteBinding>(ActivityInvite
             }
         }
 
+        observeEvent(viewModel.inviteEvent) {
+            when (it) {
+                is InviteEvent.NeedLogin -> {
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+                is InviteEvent.Success -> {
+                    startActivity(Intent(this, RoomActivity::class.java).apply {
+                        putExtra("roomId", it.roomId)
+                        putExtra("roomTitle", it.title)
+                        putExtra("roomContents", it.description)
+                    })
+                }
+            }
+        }
+
         val action = intent?.action
         val data = intent?.data
 
@@ -35,11 +53,10 @@ class InviteActivity : BaseBindingActivity<ActivityInviteBinding>(ActivityInvite
         }
 
         binding.buttonAcceptInvite.setOnClickListener {
-            // Todo
+            viewModel.joinRoom()
         }
 
         binding.buttonRejectInvite.setOnClickListener {
-            // Todo
             onBackPressed()
         }
     }

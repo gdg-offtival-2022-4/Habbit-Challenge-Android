@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.gdgofftival4.habitchallenge_android.databinding.FragmentMoreBinding
+import com.gdgofftival4.habitchallenge_android.extension.copyToClipboard
+import com.gdgofftival4.habitchallenge_android.extension.toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class RoomMoreBottomSheetDialogFragment: BottomSheetDialogFragment() {
@@ -25,7 +28,8 @@ class RoomMoreBottomSheetDialogFragment: BottomSheetDialogFragment() {
         val binding = FragmentMoreBinding.bind(view)
 
         binding.buttonCopyLink.setOnClickListener {
-            viewModel.
+            context?.copyToClipboard("inviteLink", "habitrabit://invite?roomId=${viewModel.roomId}")
+            Toast.makeText(context, "초대 링크가 복사되었습니다.", Toast.LENGTH_SHORT).show()
         }
 
         binding.buttonExit.setOnClickListener {

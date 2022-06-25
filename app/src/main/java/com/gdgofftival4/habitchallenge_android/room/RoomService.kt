@@ -13,6 +13,9 @@ interface RoomService {
         @Part image: MultipartBody.Part
     ): Call<PostResponse>
 
-    @GET("room")
-    fun fetchRoomMetaData(@Query("roomId") roomId: String): Call<RoomMetaDataResponse>
+    @GET("room_info")
+    fun fetchRoomMetaData(@Query("room_id") roomId: String): Call<RoomMetaDataResponse>
+
+    @POST("room_join")
+    fun joinRoom(@Body joinRoomRequest: JoinRoomRequest): Call<Nothing>
 }

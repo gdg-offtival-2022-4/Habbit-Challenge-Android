@@ -65,4 +65,11 @@ enum class CategoryImg(val categoryName:String, @DrawableRes val imageRes: Int) 
     STUDY("3",R.mipmap.img_study_foreground),
     FITNESS("4",R.mipmap.img_fitness_foreground),
     OTHER("5",R.mipmap.img_more_foreground)
+    ;
+
+    companion object {
+        fun parse(name: String): CategoryImg {
+            return values().find { it.name == name } ?: CategoryImg.OTHER
+        }
+    }
 }

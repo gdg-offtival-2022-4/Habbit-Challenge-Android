@@ -25,7 +25,8 @@ class RoomViewModel(
     val roomEvent: EventLiveData<RoomEvent>
         get() = _roomEvent
 
-    private var roomId: String = ""
+    var roomId: String = ""
+        private set
 
     fun setRoomId(roomId: String) {
         this.roomId = roomId
