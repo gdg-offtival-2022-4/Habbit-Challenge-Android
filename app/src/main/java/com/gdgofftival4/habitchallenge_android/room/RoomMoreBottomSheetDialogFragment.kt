@@ -30,10 +30,12 @@ class RoomMoreBottomSheetDialogFragment: BottomSheetDialogFragment() {
         binding.buttonCopyLink.setOnClickListener {
             context?.copyToClipboard("inviteLink", "habitrabit://invite?roomId=${viewModel.roomId}")
             Toast.makeText(context, "초대 링크가 복사되었습니다.", Toast.LENGTH_SHORT).show()
+            dismissAllowingStateLoss()
         }
 
         binding.buttonExit.setOnClickListener {
             viewModel.exitRoom()
+            dismissAllowingStateLoss()
         }
     }
 }
