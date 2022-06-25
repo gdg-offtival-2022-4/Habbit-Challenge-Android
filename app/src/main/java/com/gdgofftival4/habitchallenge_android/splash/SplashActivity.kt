@@ -10,6 +10,7 @@ import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
 import com.gdgofftival4.habitchallenge_android.detail.UserContentListActivity
 import com.gdgofftival4.habitchallenge_android.home.HomeActivity
 import com.gdgofftival4.habitchallenge_android.login.LoginActivity
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

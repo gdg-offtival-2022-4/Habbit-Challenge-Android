@@ -76,7 +76,7 @@ class UserContentListRecyclerViewAdapter(
     class DetailContentViewHolder(
         parent: ViewGroup,
         itemWidth: Int,
-    ): RecyclerView.ViewHolder(
+    ) : RecyclerView.ViewHolder(
         LayoutInflater.from(parent.context).inflate(R.layout.item_user_content, parent, false)
     ) {
         private val binding = ItemUserContentBinding.bind(itemView)
@@ -98,12 +98,16 @@ class UserContentListRecyclerViewAdapter(
                     binding.imageDetailContentStatus.isVisible = false
                 }
                 UserContentState.REJECT -> {
-                    binding.imageDetailContentStatus.isVisible = true
-                    // Todo
+                    with(binding.imageDetailContentStatus) {
+                        isVisible = true
+                        setImageResource(R.drawable.ic_reject_badge)
+                    }
                 }
                 UserContentState.PENDING -> {
-                    binding.imageDetailContentStatus.isVisible = true
-                    // Todo
+                    with(binding.imageDetailContentStatus) {
+                        isVisible = true
+                        setImageResource(R.drawable.ic_pending_badge)
+                    }
                 }
             }
         }

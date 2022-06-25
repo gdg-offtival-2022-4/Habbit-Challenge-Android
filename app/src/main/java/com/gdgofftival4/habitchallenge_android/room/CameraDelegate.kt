@@ -23,7 +23,7 @@ class CameraImageDelegate(private val context: Context) {
         return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", imageFile)
     }
 
-    private fun createImageFile() : File {
+    fun createImageFile() : File {
         // Android 10 부터는 파일을 MediaStore 에 저장해야합니다.
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
             val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -50,4 +50,8 @@ class CameraImageDelegate(private val context: Context) {
             storageDir
         )
     }
+}
+
+fun File.toUri(context: Context): Uri {
+    return FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", this)
 }

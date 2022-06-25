@@ -1,57 +1,28 @@
 package com.gdgofftival4.habitchallenge_android.detail
 
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gdgofftival4.habitchallenge_android.common.EventLiveData
-import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig.userId
-import com.gdgofftival4.habitchallenge_android.common.MutableEventLiveData
 import com.gdgofftival4.habitchallenge_android.detail.model.DetailResponse
 import com.gdgofftival4.habitchallenge_android.detail.model.GetDetailService
-import com.gdgofftival4.habitchallenge_android.detail.model.MetaDetailModel
-import com.gdgofftival4.habitchallenge_android.home.model.GetHomeService
-import com.gdgofftival4.habitchallenge_android.home.model.RoomUiResponse
 import com.gdgofftival4.habitchallenge_android.network.RetrofitClient
-import com.gdgofftival4.habitchallenge_android.network.onFailure
-import com.gdgofftival4.habitchallenge_android.network.onSuccess
-import com.gdgofftival4.habitchallenge_android.network.toApiResponse
-import com.gdgofftival4.habitchallenge_android.register.MetaRegisterModel
-import com.gdgofftival4.habitchallenge_android.register.RegisterService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.File
 
 class DetailViewModel(
     private val detailService: GetDetailService = RetrofitClient.instance.create(GetDetailService::class.java)
 ) : ViewModel() {
 
-    private var metaDetailModel: MetaDetailModel? = null
-
-    fun setDetailMode(metaDetailModel: MetaDetailModel?) {
-        this.metaDetailModel = metaDetailModel
-        if (metaDetailModel == null) {
-            // Todo: 유저 정보 api 요청
-
-        }
-    }
+    private var roomId: String = ""
+    private var postId: String = ""
 
     private val _detailUiModel = MutableLiveData<DetailResponse>()
     val detailUiModel: LiveData<DetailResponse>
         get() = _detailUiModel
 
     fun getDetail(roomId: String, postId: String) {
+        this.roomId = roomId
+        this.postId = postId
         viewModelScope.launch {
             with(detailService.getDetailt(roomId, postId)) {
                 if(this.isSuccessful){

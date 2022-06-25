@@ -10,11 +10,14 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityRoomBinding
+import com.gdgofftival4.habitchallenge_android.detail.DetailActivity
+import com.gdgofftival4.habitchallenge_android.extension.observeEvent
 import com.gdgofftival4.habitchallenge_android.extension.toast
 import com.gdgofftival4.habitchallenge_android.profile.EditProfileActivity
 import com.gdgofftival4.habitchallenge_android.room.adapter.RoomViewpagerFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import java.io.File
 
 class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBinding::inflate) {
 
@@ -27,15 +30,17 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             with(result) {
                 val imageUri = currentCameraImage
-                if (imageUri == null || resultCode != Activity.RESULT_OK) {
+                val file = currentCameraImageFile
+                if (imageUri == null || file == null || resultCode != Activity.RESULT_OK) {
                     toast("실패")
                 } else {
-                    viewModel.onCameraImageResponse(imageUri)
+                    viewModel.onCameraImageResponse(file)
                 }
             }
         }
 
     private var currentCameraImage: Uri? = null
+    private var currentCameraImageFile: File? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +49,17 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         val roomContents = intent.getStringExtra("roomContents")
 
         rankViewModel.setRoomId(roomId.toString())
+        viewModel.setRoomId(roomId.toString())
+
+        observeEvent(viewModel.roomEvent) {
+            when (it) {
+                is RoomEvent.GoDetail -> DetailActivity.startDetailActivity(
+                    context = this,
+                    roomId = it.roomId,
+                    postId = it.postId,
+                )
+            }
+        }
 
         binding.roomTitle.text = roomTitle
         binding.roomContents.text = roomContents
@@ -66,7 +82,10 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         }.attach()
 
         binding.moreBtn.setOnClickListener {
-            val imageUri = cameraImageDelegate.createImageUri().also {
+            val file = cameraImageDelegate.createImageFile().also {
+                currentCameraImageFile = it
+            }
+            val imageUri = file.toUri(this).also {
                 currentCameraImage = it
             }
             Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->

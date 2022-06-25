@@ -9,9 +9,6 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityDetailBinding
-import com.gdgofftival4.habitchallenge_android.detail.model.MetaDetailModel
-import com.gdgofftival4.habitchallenge_android.profile.EditProfileActivity
-import com.gdgofftival4.habitchallenge_android.register.MetaRegisterModel
 
 class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetailBinding::inflate) {
 
@@ -19,14 +16,9 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val metaDetailModel =
-            intent.getParcelableExtra<MetaDetailModel>(EXTRA_META_DETAIL_MODEL)
-        viewModel.setDetailMode(metaDetailModel)
-
-        val roomId = intent.getStringExtra("roomId")
-        val postId = intent.getStringExtra("postId")
-
-        viewModel.getDetail(roomId!!, postId!!)
+        val roomId = intent.getStringExtra(EXTRA_ROOM_ID).orEmpty()
+        val postId = intent.getStringExtra(EXTRA_POST_ID).orEmpty()
+        viewModel.getDetail(roomId, postId)
 
         viewModel.detailUiModel.observe(this) {
             with(it.user) {
@@ -60,14 +52,17 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
     }
 
     companion object {
-        private const val EXTRA_META_DETAIL_MODEL = "metaDetailModel"
+        private const val EXTRA_ROOM_ID = "roomId"
+        private const val EXTRA_POST_ID = "postId"
 
         fun startDetailActivity(
             context: Context,
-            metaDetailModel: MetaDetailModel? = null
+            roomId: String,
+            postId: String
         ) {
             context.startActivity(Intent(context, DetailActivity::class.java).apply {
-                putExtra(EXTRA_META_DETAIL_MODEL, metaDetailModel)
+                putExtra(EXTRA_ROOM_ID, roomId)
+                putExtra(EXTRA_POST_ID, postId)
             })
         }
     }
