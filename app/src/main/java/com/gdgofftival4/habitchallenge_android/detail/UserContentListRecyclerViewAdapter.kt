@@ -9,7 +9,7 @@ import com.gdgofftival4.habitchallenge_android.databinding.ItemUserContentBindin
 import com.gdgofftival4.habitchallenge_android.databinding.ItemUserContentDateBinding
 import com.gdgofftival4.habitchallenge_android.extension.setImageUri
 
-class DetailRecyclerViewAdapter(
+class UserContentListRecyclerViewAdapter(
     private val itemWidth: Int
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
