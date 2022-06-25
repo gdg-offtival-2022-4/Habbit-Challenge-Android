@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitChallengeAndroid">
         <activity
+            android:name=".invite.InviteActivity"
+            android:exported="false" />
+        <activity
             android:name=".detail.UserContentListActivity"
             android:exported="false" />
         <activity
@@ -41,6 +44,7 @@
         <activity
             android:name=".room.RoomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
     </application>
+
 </manifest>
