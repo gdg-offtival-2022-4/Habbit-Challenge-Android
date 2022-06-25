@@ -11,6 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val roomId = intent.getStringExtra("roomId")
 
         val viewPager: ViewPager2 = binding.viewPager
         val tabLayout: TabLayout = binding.tabLayout
