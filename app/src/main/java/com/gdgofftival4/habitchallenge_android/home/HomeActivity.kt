@@ -1,19 +1,12 @@
 package com.gdgofftival4.habitchallenge_android.home
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
-import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityHomeBinding
-import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
 import com.gdgofftival4.habitchallenge_android.home.adapter.RoomAdapter
 import com.gdgofftival4.habitchallenge_android.home.model.Rooms
-import com.gdgofftival4.habitchallenge_android.login.LoginActivity
 
-@SuppressLint("CustomSplashScreen")
 class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBinding::inflate) {
     lateinit var roomAdapter: RoomAdapter
 
