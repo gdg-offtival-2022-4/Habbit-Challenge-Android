@@ -3,5 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:paddingHorizontal="16dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="8dp"
+    android:textColor="@color/primary"
+    android:textSize="16dp"
     tools:text="2022년 6월" />
