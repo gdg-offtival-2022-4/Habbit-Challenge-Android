@@ -34,4 +34,26 @@
             android:text="more">
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="@color/black"
+        app:tabIndicatorColor="@color/black"
+        app:tabPaddingTop="16dp"
+        app:tabPaddingBottom="16dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        app:tabBackground="@drawable/tab_underline"
+        app:tabTextAppearance="@style/tab_text"
+        app:tabTextColor="@color/tab_gray"
+        app:layout_constraintTop_toBottomOf="@id/search_txt"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/tabLayout"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </androidx.constraintlayout.widget.ConstraintLayout>

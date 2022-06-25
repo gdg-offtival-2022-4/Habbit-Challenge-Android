@@ -1,11 +1,14 @@
 package com.gdgofftival4.habitchallenge_android.home
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityHomeBinding
 import com.gdgofftival4.habitchallenge_android.home.adapter.RoomAdapter
 import com.gdgofftival4.habitchallenge_android.home.model.Rooms
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 
 class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBinding::inflate) {
     lateinit var roomAdapter: RoomAdapter
