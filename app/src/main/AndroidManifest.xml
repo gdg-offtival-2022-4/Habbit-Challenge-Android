@@ -30,11 +30,14 @@
             android:name=".profile.EditProfileActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+<<<<<<< HEAD
         <activity
             android:name=".home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
 
+=======
+>>>>>>> b218ba7301a84050aa6bf24d99d1d29517628999
     </application>
 
 </manifest>
