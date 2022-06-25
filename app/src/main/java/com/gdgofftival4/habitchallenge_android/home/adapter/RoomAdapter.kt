@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.home.model.Room
+import com.gdgofftival4.habitchallenge_android.home.model.RoomUiResponse
 
 class RoomAdapter(
-    private val onItemClick: (position: Int) -> Unit
+    private val onItemClick: (rooId: String) -> Unit
 ) : RecyclerView.Adapter<RoomHolderPage>() {
 
-    private val itemList = ArrayList<Room>()
+    private val itemList = ArrayList<RoomUiResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomHolderPage {
         val context: Context = parent.context
@@ -30,12 +30,12 @@ class RoomAdapter(
         return itemList.size
     }
 
-    fun getItem(position: Int): Room {
+    fun getItem(position: Int): RoomUiResponse {
         return itemList[position]
     }
 
 
-    fun addAll(items: List<Room>) {
+    fun addAll(items: List<RoomUiResponse>) {
         itemList.clear()
         itemList.addAll(items)
         notifyDataSetChanged()
