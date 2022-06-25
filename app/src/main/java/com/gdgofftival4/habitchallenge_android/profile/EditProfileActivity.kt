@@ -11,12 +11,11 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
+import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityEditProfieBinding
-import com.gdgofftival4.habitchallenge_android.extension.repeatOnStart
-import com.gdgofftival4.habitchallenge_android.extension.setCircleImageUri
-import com.gdgofftival4.habitchallenge_android.extension.setTextIfNew
-import com.gdgofftival4.habitchallenge_android.extension.toast
+import com.gdgofftival4.habitchallenge_android.extension.*
+import com.gdgofftival4.habitchallenge_android.home.HomeActivity
 import com.gdgofftival4.habitchallenge_android.register.MetaRegisterModel
 import kotlinx.coroutines.launch
 import java.io.File
@@ -48,9 +47,16 @@ class EditProfileActivity :
         repeatOnStart {
             launch {
                 viewModel.profileUiModel.collect {
-                    binding.imageProfile.setCircleImageUri(it.image)
+                    binding.imageProfile.setCircleImageUri(it.image, R.drawable.ic_profile_default)
                     binding.inputNicknameProfile.setTextIfNew(it.nickName)
                 }
+            }
+        }
+
+        observeEvent(viewModel.profileEvent) {
+            when (it) {
+                is EditProfileEvent.Success -> startActivity(Intent(this, HomeActivity::class.java))
+                is EditProfileEvent.Failure -> toast("실패, ${it.message}")
             }
         }
 

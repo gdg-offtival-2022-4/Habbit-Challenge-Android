@@ -10,7 +10,7 @@ interface RegisterService {
 
     @Multipart
     @POST("signup")
-    suspend fun register(
+    fun register(
         @Part("id") email: String,
         @Part("pw") password: String,
         @Part("nickname") nickName: String,

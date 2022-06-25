@@ -4,6 +4,8 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gdgofftival4.habitchallenge_android.common.EventLiveData
+import com.gdgofftival4.habitchallenge_android.common.MutableEventLiveData
 import com.gdgofftival4.habitchallenge_android.network.RetrofitClient
 import com.gdgofftival4.habitchallenge_android.network.onFailure
 import com.gdgofftival4.habitchallenge_android.network.onSuccess
@@ -30,6 +32,10 @@ class EditProfileViewModel(
     private val _profileUiModel = MutableStateFlow(EditProfileUiModel())
     val profileUiModel: StateFlow<EditProfileUiModel>
         get() = _profileUiModel
+
+    private val _profileEvent = MutableEventLiveData<EditProfileEvent>()
+    val profileEvent: EventLiveData<EditProfileEvent>
+        get() = _profileEvent
 
     private var metaRegisterModel: MetaRegisterModel? = null
 
@@ -70,9 +76,10 @@ class EditProfileViewModel(
                         profileImage = multipartImage
                     ).toApiResponse()
                 }.onSuccess {
-                    Log.d("TESTT", "SUCCESS ${it.user_id}")
+                    _profileEvent.event = EditProfileEvent.Success
                 }.onFailure {
-                    Log.e("TESTT", "${it.stackTrace}")
+                    Log.e(javaClass.simpleName, "${it.stackTrace}")
+                    _profileEvent.event = EditProfileEvent.Failure(it.message.orEmpty())
                 }
             }
         } else {
@@ -85,3 +92,8 @@ data class EditProfileUiModel(
     val image: Uri = Uri.EMPTY,
     val nickName: String = "",
 )
+
+sealed class EditProfileEvent {
+    object Success: EditProfileEvent()
+    data class Failure(val message: String): EditProfileEvent()
+}

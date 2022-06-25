@@ -5,6 +5,7 @@ import android.util.DisplayMetrics
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityUserContentListBinding
 import com.gdgofftival4.habitchallenge_android.extension.repeatOnStart
@@ -23,9 +24,9 @@ class UserContentListActivity :
             launch {
                 viewModel.userContentListUiModel.collect {
                     val adapter =
-                        binding.recyclerviewHabitContentList.adapter as? DetailRecyclerViewAdapter
+                        binding.recyclerviewHabitContentList.adapter as? UserContentListRecyclerViewAdapter
                     adapter?.replaceAll(it.userContentItems)
-                    binding.profileImageContentList.setCircleImageUri(it.profileImageUri)
+                    binding.profileImageContentList.setCircleImageUri(it.profileImageUri, R.drawable.ic_profile_default)
                     binding.rankContentList.text = String.format("%d위", it.ranking)
                     binding.nicknameContentList.text = it.nickName
                     binding.habitComboContentList.text = String.format("+%d", it.combo)
@@ -42,13 +43,13 @@ class UserContentListActivity :
             windowManager.defaultDisplay.getMetrics(this)
         }
         val itemWidth = displayMetrics.widthPixels / GRID_HORIZONTAL_ITEM_COUNT
-        val detailRecyclerViewAdapter = DetailRecyclerViewAdapter(itemWidth)
+        val detailRecyclerViewAdapter = UserContentListRecyclerViewAdapter(itemWidth)
         adapter = detailRecyclerViewAdapter
         layoutManager = GridLayoutManager(context, GRID_HORIZONTAL_ITEM_COUNT).apply {
             spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
                     val viewType = detailRecyclerViewAdapter.getItemViewType(position)
-                    return if (viewType == DetailRecyclerViewAdapter.VIEW_TYPE_DATE) {
+                    return if (viewType == UserContentListRecyclerViewAdapter.VIEW_TYPE_DATE) {
                         GRID_HORIZONTAL_ITEM_COUNT
                     } else {
                         1
