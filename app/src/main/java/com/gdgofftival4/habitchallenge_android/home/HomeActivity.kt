@@ -3,6 +3,7 @@ package com.gdgofftival4.habitchallenge_android.home
 import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.gdgofftival4.habitchallenge_android.addroom.AddRoomActivity
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityHomeBinding
 import com.gdgofftival4.habitchallenge_android.home.adapter.RoomAdapter
@@ -35,7 +36,7 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         roomAdapter.addAll(dummy)
 
         binding.addBtn.setOnClickListener {
-
+            startActivity(Intent(this, AddRoomActivity::class.java))
         }
 
         binding.userBtn.setOnClickListener {

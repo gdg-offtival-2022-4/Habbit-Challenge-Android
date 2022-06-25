@@ -42,5 +42,9 @@
             android:name=".room.RoomActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+        <activity
+            android:name=".addroom.AddRoomActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
     </application>
 </manifest>

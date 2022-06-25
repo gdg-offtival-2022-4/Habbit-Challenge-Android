@@ -32,6 +32,6 @@ class PendingContentsHolderPage internal constructor(
         Glide.with(itemView.context)
             .load(data.contentImg)
             .transform(CenterCrop())
-            .into(binding.contentsImg)
+            .into(binding.contentImg)
     }
 }
