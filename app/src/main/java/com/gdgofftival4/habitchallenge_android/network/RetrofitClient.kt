@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = ""
+    private const val BASE_URL = "http://ec2-13-209-15-60.ap-northeast-2.compute.amazonaws.com/index.php/api/"
 
     val instance: Retrofit by lazy {
         Retrofit.Builder()
