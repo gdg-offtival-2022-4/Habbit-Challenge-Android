@@ -2,10 +2,13 @@ package com.gdgofftival4.habitchallenge_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
+import com.gdgofftival4.habitchallenge_android.databinding.ActivityMainBinding
+import com.gdgofftival4.habitchallenge_android.databinding.ActivityMypageBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseBindingActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
     }
 }
