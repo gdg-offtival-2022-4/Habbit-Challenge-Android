@@ -7,6 +7,7 @@ import androidx.lifecycle.lifecycleScope
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig
 import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
+import com.gdgofftival4.habitchallenge_android.detail.UserContentListActivity
 import com.gdgofftival4.habitchallenge_android.home.HomeActivity
 import com.gdgofftival4.habitchallenge_android.login.LoginActivity
 import kotlinx.coroutines.delay

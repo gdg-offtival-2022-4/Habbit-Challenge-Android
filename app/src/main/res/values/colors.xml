@@ -10,5 +10,6 @@
     
     <color name="primary">#292C2F</color>
     <color name="gray_light">#E0E0E0</color>
+    <color name="gray_default">#747474</color>
     <color name="marin_primary">#292C2F</color>
 </resources>
