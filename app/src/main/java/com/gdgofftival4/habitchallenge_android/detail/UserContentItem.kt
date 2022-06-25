@@ -15,5 +15,14 @@ sealed class UserContentItem {
 }
 
 enum class UserContentState {
-    REJECT, ACCEPT, PENDING
+    REJECT,
+    ACCEPT,
+    PENDING,
+    ;
+
+    companion object {
+        fun parse(state: String): UserContentState {
+            return values().find { it.name == state } ?: PENDING
+        }
+    }
 }

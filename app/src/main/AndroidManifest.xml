@@ -15,10 +15,13 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".invite.InviteActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
         <activity
             android:name=".detail.UserContentListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
+
         <activity
             android:name=".splash.SplashActivity"
             android:exported="true"
@@ -48,11 +51,16 @@
         <activity
             android:name=".room.RoomActivity"
             android:screenOrientation="portrait"
+<<<<<<< HEAD
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+=======
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
+>>>>>>> 7819c8c8e23675420a75e2f13c2225bb9e677c3d
         <activity
             android:name=".addroom.AddRoomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

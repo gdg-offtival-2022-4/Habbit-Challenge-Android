@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gdgofftival4.habitchallenge_android.common.EventLiveData
+import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig
 import com.gdgofftival4.habitchallenge_android.common.MutableEventLiveData
 import com.gdgofftival4.habitchallenge_android.network.RetrofitClient
 import com.gdgofftival4.habitchallenge_android.network.onFailure
@@ -26,7 +27,8 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
 class EditProfileViewModel(
-    private val registerService: RegisterService = RetrofitClient.instance.create(RegisterService::class.java)
+    private val registerService: RegisterService = RetrofitClient.instance.create(RegisterService::class.java),
+    private val config: HabitChallengeConfig = HabitChallengeConfig
 ) : ViewModel() {
 
     private val _profileUiModel = MutableStateFlow(EditProfileUiModel())
@@ -76,6 +78,7 @@ class EditProfileViewModel(
                         profileImage = multipartImage
                     ).toApiResponse()
                 }.onSuccess {
+                    config.userId = it.user_id
                     _profileEvent.event = EditProfileEvent.Success
                 }.onFailure {
                     Log.e(javaClass.simpleName, "${it.stackTrace}")
