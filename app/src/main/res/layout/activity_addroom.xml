@@ -68,6 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@id/add_title_txt"
                 android:padding="12dp"
                 android:hint="제목을 입력해주세요."
+                android:textColorHint="@color/gray_light"
                 android:textSize="16dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
@@ -119,6 +120,9 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
+                android:textColorHint="@color/gray_light"
+                android:hint="습관을 만들기 위한 규칙을 정해주세요."
+                android:textColor="@color/black"
                 android:background="@drawable/shape_round_rectangle">
             </EditText>
         </androidx.constraintlayout.widget.ConstraintLayout>
