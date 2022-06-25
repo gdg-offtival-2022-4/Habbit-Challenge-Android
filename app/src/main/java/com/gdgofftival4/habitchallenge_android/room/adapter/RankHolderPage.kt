@@ -4,11 +4,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.gdgofftival4.habitchallenge_android.databinding.ItemRankBinding
-import com.gdgofftival4.habitchallenge_android.databinding.ItemRoomBinding
-import com.gdgofftival4.habitchallenge_android.home.model.Room
-import com.gdgofftival4.habitchallenge_android.room.model.Rank
+import com.gdgofftival4.habitchallenge_android.room.model.RankUiResponse
 
 
 class RankHolderPage internal constructor(
@@ -18,8 +15,8 @@ class RankHolderPage internal constructor(
 
     private val binding = ItemRankBinding.bind(itemView)
 
-    var data: Rank? = null
-    fun onBind(data: Rank) {
+    var data: RankUiResponse? = null
+    fun onBind(data: RankUiResponse) {
         this.data = data
         binding.rankMain.setOnClickListener {
             val position = adapterPosition

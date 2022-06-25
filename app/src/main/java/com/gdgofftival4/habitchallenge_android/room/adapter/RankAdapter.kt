@@ -6,15 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.home.adapter.RoomHolderPage
-import com.gdgofftival4.habitchallenge_android.home.model.Room
-import com.gdgofftival4.habitchallenge_android.room.model.Rank
+import com.gdgofftival4.habitchallenge_android.room.model.RankUiResponse
 
 class RankAdapter(
     private val onItemClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<RankHolderPage>() {
 
-    private val itemList = ArrayList<Rank>()
+    private val itemList = ArrayList<RankUiResponse>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RankHolderPage {
         val context: Context = parent.context
@@ -32,12 +30,12 @@ class RankAdapter(
         return itemList.size
     }
 
-    fun getItem(position: Int): Rank {
+    fun getItem(position: Int): RankUiResponse {
         return itemList[position]
     }
 
 
-    fun addAll(items: List<Rank>) {
+    fun addAll(items: List<RankUiResponse>) {
         itemList.clear()
         itemList.addAll(items)
         notifyDataSetChanged()

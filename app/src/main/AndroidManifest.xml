@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitChallengeAndroid">
         <activity
+            android:name=".invite.InviteActivity"
+            android:exported="false" />
+        <activity
             android:name=".detail.UserContentListActivity"
             android:exported="false" />
         <activity
@@ -47,4 +50,5 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
     </application>
+
 </manifest>

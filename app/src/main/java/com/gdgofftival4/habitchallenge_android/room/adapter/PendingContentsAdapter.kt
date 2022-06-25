@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gdgofftival4.habitchallenge_android.R
-import com.gdgofftival4.habitchallenge_android.home.adapter.RoomHolderPage
-import com.gdgofftival4.habitchallenge_android.home.model.Room
 import com.gdgofftival4.habitchallenge_android.room.model.PendingContent
-import com.gdgofftival4.habitchallenge_android.room.model.Rank
 
 class PendingContentsAdapter(
     private val onItemClick: (position: Int) -> Unit

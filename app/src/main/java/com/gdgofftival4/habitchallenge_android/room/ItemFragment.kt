@@ -6,12 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.gdgofftival4.habitchallenge_android.databinding.FragmentItemBinding
 import com.gdgofftival4.habitchallenge_android.room.adapter.PendingContentsAdapter
-import com.gdgofftival4.habitchallenge_android.room.adapter.RankAdapter
 import com.gdgofftival4.habitchallenge_android.room.model.PendingContent
-import com.gdgofftival4.habitchallenge_android.room.model.Rank
 
 
 class ItemFragment : Fragment() {
