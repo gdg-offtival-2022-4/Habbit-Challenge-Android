@@ -10,8 +10,12 @@ class RegisterActivity : BaseBindingActivity<ActivityRegisterBinding>(ActivityRe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.okBtn.setOnClickListener {
+        binding.doneBtn.setOnClickListener {
             startActivity(Intent(this, EditProfileActivity::class.java))
+        }
+
+        binding.backBtn.setOnClickListener {
+            finish()
         }
 
     }
