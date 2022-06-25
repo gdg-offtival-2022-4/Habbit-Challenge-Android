@@ -1,12 +1,15 @@
-package com.gdgofftival4.habitchallenge_android.home
+package com.gdgofftival4.habitchallenge_android.splash
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.common.HabitChallengeConfig
-import com.gdgofftival4.habitchallenge_android.databinding.ActivityMainBinding
+import com.gdgofftival4.habitchallenge_android.databinding.ActivitySplashBinding
+import com.gdgofftival4.habitchallenge_android.login.LoginActivity
 
-class MainActivity : BaseBindingActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+@SuppressLint("CustomSplashScreen")
+class SplashActivity : BaseBindingActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
