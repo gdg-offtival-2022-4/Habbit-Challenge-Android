@@ -14,7 +14,7 @@ import com.gdgofftival4.habitchallenge_android.home.model.Rooms
 
 class RoomHolderPage internal constructor(
     itemView: View,
-    val ItemClickListener: RoomAdapter.OnItemClickEventListener?
+    val onClick: (position: Int) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
 
     private val binding = ItemRoomBinding.bind(itemView)
@@ -25,7 +25,7 @@ class RoomHolderPage internal constructor(
         binding.itemRoom.setOnClickListener { a_view ->
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
-                ItemClickListener!!.onItemClick(a_view, position)
+                onClick.invoke(position)
             }
         }
         Glide.with(itemView.context)
