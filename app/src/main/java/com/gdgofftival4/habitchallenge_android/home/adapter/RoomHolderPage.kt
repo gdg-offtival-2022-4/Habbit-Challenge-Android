@@ -19,7 +19,7 @@ class RoomHolderPage internal constructor(
     var data: Room? = null
     fun onBind(data: Room) {
         this.data = data
-        binding.itemRoom.setOnClickListener { a_view ->
+        binding.itemRoom.setOnClickListener {
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 onClick.invoke(position)

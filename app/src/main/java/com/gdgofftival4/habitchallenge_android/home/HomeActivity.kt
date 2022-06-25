@@ -1,14 +1,14 @@
 package com.gdgofftival4.habitchallenge_android.home
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityHomeBinding
 import com.gdgofftival4.habitchallenge_android.home.adapter.RoomAdapter
 import com.gdgofftival4.habitchallenge_android.home.model.Room
+import com.gdgofftival4.habitchallenge_android.room.RoomActivity
 
-@SuppressLint("CustomSplashScreen")
 class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBinding::inflate) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +18,7 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         val roomAdapter = RoomAdapter(
             onItemClick = {
                 // Todo
+                startActivity(Intent(this, RoomActivity::class.java))
             }
         )
 
