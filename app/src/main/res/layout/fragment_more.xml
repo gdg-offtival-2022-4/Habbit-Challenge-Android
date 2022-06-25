@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    android:background="@drawable/top_round_rectangle"
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="28dp">
+
+    <TextView
+        android:id="@+id/button_copy_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingVertical="17dp"
+        android:text="초대링크복사"
+        android:textColor="@color/primary"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_light" />
+
+    <TextView
+        android:id="@+id/button_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:paddingVertical="17dp"
+        android:text="습관 끊기"
+        android:textColor="@color/sub_warm"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

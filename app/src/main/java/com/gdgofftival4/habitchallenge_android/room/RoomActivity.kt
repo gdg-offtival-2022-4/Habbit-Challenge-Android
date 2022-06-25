@@ -97,7 +97,7 @@ class RoomActivity : BaseBindingActivity<ActivityRoomBinding>(ActivityRoomBindin
         }
 
         binding.informationBtn.setOnClickListener {
-            EditProfileActivity.startEditProfileActivity(this)
+
         }
 
         binding.backBtn.setOnClickListener {

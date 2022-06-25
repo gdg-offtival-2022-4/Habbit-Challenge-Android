@@ -2,9 +2,7 @@ package com.gdgofftival4.habitchallenge_android.room
 
 import okhttp3.MultipartBody
 import retrofit2.Call
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
+import retrofit2.http.*
 
 interface RoomService {
     @Multipart
@@ -14,4 +12,7 @@ interface RoomService {
         @Part("room_id") roomId: String,
         @Part image: MultipartBody.Part
     ): Call<PostResponse>
+
+    @GET("room")
+    fun fetchRoomMetaData(@Query("roomId") roomId: String): Call<RoomMetaDataResponse>
 }

@@ -50,6 +50,10 @@ class RoomViewModel(
             }
         }
     }
+
+    fun exitRoom() {
+        // Todo
+    }
 }
 
 sealed class RoomEvent {

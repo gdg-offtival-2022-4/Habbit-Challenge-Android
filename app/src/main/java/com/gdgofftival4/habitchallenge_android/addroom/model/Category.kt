@@ -14,10 +14,16 @@ data class CategoryRequest(
 
 enum class Category(val idx: String, val categoryName: String, @DrawableRes val imageRes: Int) {
     SLEEP("1", "수면", R.drawable.ic_sleep),
-    DIET("2","식단", R.drawable.ic_diet),
-    STUDY("3","공부", R.drawable.ic_study),
-    FITNESS("4","운동", R.drawable.ic_finess),
-    OTHER("5","기타", R.drawable.ic_more)
+    DIET("2", "식단", R.drawable.ic_diet),
+    STUDY("3", "공부", R.drawable.ic_study),
+    FITNESS("4", "운동", R.drawable.ic_finess),
+    OTHER("5", "기타", R.drawable.ic_more);
+
+    companion object {
+        fun parse(name: String): Category {
+            return values().find { it.name == name } ?: OTHER
+        }
+    }
 }
 
 data class CategoryUiModel(

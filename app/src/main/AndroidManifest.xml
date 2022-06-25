@@ -15,8 +15,19 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".invite.InviteActivity"
-            android:exported="false"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
+            android:exported="true"
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="invite"
+                    android:scheme="habitrabit" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".detail.UserContentListActivity"
             android:exported="false"
@@ -51,7 +62,7 @@
         <activity
             android:name=".room.RoomActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar"/>
+            android:theme="@style/Theme.HabitChallengeAndroid.NoActionBar" />
         <activity
             android:name=".addroom.AddRoomActivity"
             android:screenOrientation="portrait"
