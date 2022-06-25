@@ -2,6 +2,7 @@ package com.gdgofftival4.habitchallenge_android.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.gdgofftival4.habitchallenge_android.addroom.AddRoomActivity
@@ -19,8 +20,6 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        viewModel.getHomeList(HabitChallengeConfig.userId.toString())
-        viewModel.getHomeList("1")
 
         val roomAdapter = RoomAdapter(
             onItemClick = { roomId, roomTitle, roomContents ->
@@ -39,7 +38,17 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         }
 
         viewModel.homeUiModel.observe(this) {
-            roomAdapter.addAll(it)
+            if(it.isEmpty()){
+                binding.emptyTxt.text = "\uD83D\uDE2D\n" + "아직 초대된 방이 없어요."
+                binding.emptyTxt.visibility = View.VISIBLE
+                binding.roomRecycler.visibility = View.GONE
+            }
+            else{
+                binding.emptyTxt.visibility = View.GONE
+                binding.roomRecycler.visibility = View.VISIBLE
+                roomAdapter.addAll(it)
+            }
+
         }
 
         binding.addBtn.setOnClickListener {
@@ -49,5 +58,10 @@ class HomeActivity : BaseBindingActivity<ActivityHomeBinding>(ActivityHomeBindin
         binding.userBtn.setOnClickListener {
             EditProfileActivity.startEditProfileActivity(this)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getHomeList(HabitChallengeConfig.userId.toString())
     }
 }

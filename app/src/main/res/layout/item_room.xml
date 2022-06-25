@@ -15,6 +15,7 @@
         android:id="@+id/room_image"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent">
     </ImageView>
 

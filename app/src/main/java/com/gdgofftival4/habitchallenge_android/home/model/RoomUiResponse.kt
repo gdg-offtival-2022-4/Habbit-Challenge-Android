@@ -1,5 +1,7 @@
 package com.gdgofftival4.habitchallenge_android.home.model
 
+import androidx.annotation.DrawableRes
+import com.gdgofftival4.habitchallenge_android.R
 import com.google.gson.annotations.SerializedName
 
 data class RoomUiResponse(
