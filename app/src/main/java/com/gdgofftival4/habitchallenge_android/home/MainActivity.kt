@@ -1,4 +1,4 @@
-package com.gdgofftival4.habitchallenge_android
+package com.gdgofftival4.habitchallenge_android.home
 
 import android.content.Intent
 import android.os.Bundle
