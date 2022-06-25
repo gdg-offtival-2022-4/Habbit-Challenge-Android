@@ -3,7 +3,7 @@ package com.gdgofftival4.habitchallenge_android.profile
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.gdgofftival4.habitchallenge_android.login.MetaRegisterModel
+import com.gdgofftival4.habitchallenge_android.register.MetaRegisterModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
