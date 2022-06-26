@@ -45,9 +45,11 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
         }
 
         binding.okBtn.setOnClickListener {
+
         }
 
         binding.noBtn.setOnClickListener {
+
         }
     }
 
