@@ -58,14 +58,13 @@ class InviteViewModel(
                 withContext(Dispatchers.IO) {
                     roomService.joinRoom(JoinRoomRequest(room_id = roomId, user_id = userId))
                         .toApiResponse()
-                }.onSuccess {
-                    val model = inviteUiModel.value
-                    _inviteEvent.event = InviteEvent.Success(
-                        roomId = roomId,
-                        title = model.title,
-                        description = model.description,
-                    )
                 }
+                val model = inviteUiModel.value
+                _inviteEvent.event = InviteEvent.Success(
+                    roomId = roomId,
+                    title = model.title,
+                    description = model.description,
+                )
             }
         }
     }

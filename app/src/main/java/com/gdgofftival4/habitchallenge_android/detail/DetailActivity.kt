@@ -25,16 +25,18 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
 
         val roomId = intent.getStringExtra(EXTRA_ROOM_ID).orEmpty()
         val postId = intent.getStringExtra(EXTRA_POST_ID).orEmpty()
+        val uri = intent.getParcelableExtra<Uri>("uri")
         viewModel.getDetail(roomId, postId)
 
         repeatOnStart {
             launch {
                 viewModel.detailUiModel.collect {
+                    val u = uri ?: it.postImageUri
                     binding.userName.text = it.nickname
                     binding.userRank.text = String.format("D+%d", it.point)
                     binding.userImage.setCircleImageUri(it.userImageUri, R.drawable.ic_profile_default)
                     binding.dateTxt.text = it.createdDate
-                    binding.detailImg.setImageUri(it.postImageUri)
+                    binding.detailImg.setImageUri(u)
                     binding.okBtn.text = String.format("칭찬해! %d", it.goodCount)
                     binding.noBtn.text = String.format("다시해 %d", it.badCount)
                 }
@@ -61,11 +63,13 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
         fun startDetailActivity(
             context: Context,
             roomId: String,
-            postId: String
+            postId: String,
+            imageUri: Uri? = null
         ) {
             context.startActivity(Intent(context, DetailActivity::class.java).apply {
                 putExtra(EXTRA_ROOM_ID, roomId)
                 putExtra(EXTRA_POST_ID, postId)
+                putExtra("uri", imageUri)
             })
         }
     }

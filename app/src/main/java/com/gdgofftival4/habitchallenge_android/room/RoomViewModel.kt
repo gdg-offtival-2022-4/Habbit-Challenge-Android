@@ -1,5 +1,6 @@
 package com.gdgofftival4.habitchallenge_android.room
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gdgofftival4.habitchallenge_android.common.EventLiveData
@@ -33,7 +34,7 @@ class RoomViewModel(
     }
 
     fun onCameraImageResponse(imageFile: File) {
-        val userId = "2"
+        val userId = HabitChallengeConfig.userId ?: return
         val multipartImage = MultipartBody.Part.createFormData(
             "image_url",
             imageFile.name,

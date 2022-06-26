@@ -40,6 +40,7 @@ class InviteActivity : BaseBindingActivity<ActivityInviteBinding>(ActivityInvite
                         putExtra("roomTitle", it.title)
                         putExtra("roomContents", it.description)
                     })
+                    finish()
                 }
             }
         }

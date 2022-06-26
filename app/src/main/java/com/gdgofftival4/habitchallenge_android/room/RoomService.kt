@@ -17,5 +17,5 @@ interface RoomService {
     fun fetchRoomMetaData(@Query("room_id") roomId: String): Call<RoomMetaDataResponse>
 
     @POST("room_join")
-    fun joinRoom(@Body joinRoomRequest: JoinRoomRequest): Call<Nothing>
+    fun joinRoom(@Body joinRoomRequest: JoinRoomRequest): Call<JoinRoomResponse>
 }
