@@ -2,17 +2,24 @@ package com.gdgofftival4.habitchallenge_android.detail
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.gdgofftival4.habitchallenge_android.R
 import com.gdgofftival4.habitchallenge_android.base.BaseBindingActivity
 import com.gdgofftival4.habitchallenge_android.databinding.ActivityDetailBinding
+import com.gdgofftival4.habitchallenge_android.extension.repeatOnStart
+import com.gdgofftival4.habitchallenge_android.extension.setCircleImageUri
+import com.gdgofftival4.habitchallenge_android.extension.setImageUri
+import kotlinx.coroutines.launch
 
 class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetailBinding::inflate) {
 
     private val viewModel: DetailViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,24 +27,18 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
         val postId = intent.getStringExtra(EXTRA_POST_ID).orEmpty()
         viewModel.getDetail(roomId, postId)
 
-        viewModel.detailUiModel.observe(this) {
-            with(it.user) {
-
-                binding.userName.text = this.nickname
-
-                Glide.with(this@DetailActivity)
-                    .load(this.image_url)
-                    .transform(CenterCrop(),  RoundedCorners(200))
-                    .into(binding.userImage)
-
-                binding.userRank.text = "D+ "+this.point.toString()
+        repeatOnStart {
+            launch {
+                viewModel.detailUiModel.collect {
+                    binding.userName.text = it.nickname
+                    binding.userRank.text = String.format("D+%d", it.point)
+                    binding.userImage.setCircleImageUri(it.userImageUri, R.drawable.ic_profile_default)
+                    binding.dateTxt.text = it.createdDate
+                    binding.detailImg.setImageUri(it.postImageUri)
+                    binding.okBtn.text = String.format("칭찬해! %d", it.goodCount)
+                    binding.noBtn.text = String.format("다시해 %d", it.badCount)
+                }
             }
-            binding.dateTxt.text = it.created_date
-
-            Glide.with(this)
-                .load(it.post_image_url)
-                .transform(CenterCrop())
-                .into(binding.detailImg)
         }
 
         binding.backBtn.setOnClickListener {
@@ -45,9 +46,11 @@ class DetailActivity : BaseBindingActivity<ActivityDetailBinding>(ActivityDetail
         }
 
         binding.okBtn.setOnClickListener {
+            viewModel.onClickGood()
         }
 
         binding.noBtn.setOnClickListener {
+            viewModel.onClickBad()
         }
     }
 

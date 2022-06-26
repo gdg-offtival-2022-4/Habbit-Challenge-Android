@@ -1,5 +1,8 @@
 package com.gdgofftival4.habitchallenge_android.detail.model
 
+import android.net.Uri
+import com.gdgofftival4.habitchallenge_android.detail.DetailUiModel
+import com.gdgofftival4.habitchallenge_android.detail.UserContentState
 import com.google.gson.annotations.SerializedName
 
 data class DetailResponse(
@@ -18,3 +21,16 @@ data class DetailResponse(
 //    "up": 1, // 지금 고정값임
 //    "down": 2 // 지금 고정값임 ㅋㅋ
 //}
+
+fun DetailResponse.toUiModel(): DetailUiModel {
+    return DetailUiModel(
+        point = user.point,
+        nickname = user.nickname,
+        userImageUri = Uri.parse(user.image_url),
+        postImageUri = Uri.parse(post_image_url),
+        status = UserContentState.parse(status),
+        goodCount = up,
+        badCount = down,
+        createdDate = created_date
+    )
+}
