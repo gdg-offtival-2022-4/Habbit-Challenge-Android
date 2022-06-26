@@ -61,5 +61,9 @@ class AddRoomActivity : BaseBindingActivity<ActivityAddroomBinding>(ActivityAddr
         binding.okBtn.setOnClickListener {
             viewModel.onDoneAddRoom()
         }
+
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 }

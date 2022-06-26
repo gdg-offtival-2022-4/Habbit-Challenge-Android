@@ -30,6 +30,6 @@ class RankHolderPage internal constructor(
         binding.userRankBadge.isVisible = isTop
 
         binding.userName.text  = data.userName
-        binding.userRank.text = "+"+data.userCombo.toString()
+        binding.userRank.text = "D+ "+data.userCombo.toString()
     }
 }
