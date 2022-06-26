@@ -7,5 +7,5 @@ import retrofit2.http.Query
 
 interface GetRecordService {
     @GET("room_post")
-    suspend fun getRecordList(@Query("room_id") room_id: String): Response<List<RecordResponse>>
+    suspend fun getRecordList(@Query("room_id") room_id: String): Response<GetRecordResponse>
 }

@@ -42,7 +42,7 @@ class RankViewModel(
         viewModelScope.launch {
             with(recoreService.getRecordList(idx)) {
                 if(this.isSuccessful){
-                    _recordUiModel.postValue(this.body())
+                    _recordUiModel.postValue(this.body()!!.data)
                 }
             }
         }

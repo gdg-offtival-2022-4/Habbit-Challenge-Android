@@ -62,6 +62,10 @@ class UserContentListActivity :
 
         binding.recyclerviewHabitContentList.initRecyclerView()
         viewModel.loadContents(userId = userId, roomId = roomId)
+
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
     }
 
     private fun RecyclerView.initRecyclerView() {

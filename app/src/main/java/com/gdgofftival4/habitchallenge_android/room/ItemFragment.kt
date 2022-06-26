@@ -32,7 +32,7 @@ class ItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentItemBinding.bind(view)
 
-        viewModel.getRankList(viewModel.roomIdiModel.value.roomId)
+        viewModel.getRecordList(viewModel.roomIdiModel.value.roomId)
 
         val pendingAdapter = PendingContentsAdapter(
             onItemClick = {
